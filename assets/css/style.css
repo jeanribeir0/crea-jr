@@ -96,6 +96,20 @@ header ul li a {
   margin: 36px 24px;
 }
 
+.presentation-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.presentation-wrap > img {
+  display: none;
+}
+
+.presentation-texts {
+  display: flex;
+  flex-direction: column;
+}
+
 .after-title {
   display: flex;
   flex-direction: column;
@@ -190,6 +204,10 @@ header ul li a {
   margin: 64px 24px;
 }
 
+#target > img {
+  display: none;
+}
+
 #target p {
   margin: 32px 0;
 }
@@ -197,6 +215,11 @@ header ul li a {
 .credits {
   display: flex;
   flex-direction: column;
+}
+
+.credits > img {
+  width: 100%;
+  max-width: 425px;
 }
 
 .credits h3 {
@@ -342,4 +365,51 @@ header ul li a {
   background-color: #06729d;
   color: #fff;
   padding: 8px;
+}
+
+/* MEDIAQUERIE */
+
+@media screen and (min-width: 768px) {
+  /* APRESENTAÇÃO */
+
+  #presentation {
+    max-width: 800px;
+    margin: 36px auto;
+  }
+  .presentation-wrap {
+    flex-direction: row;
+    align-items: center;
+  }
+  .presentation-wrap > img {
+    display: flex;
+  }
+
+  #presentation p {
+    margin: 8px 0;
+  }
+
+  /* OBJETIVOS */
+
+  .box-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1460px;
+  }
+
+  .box {
+    max-width: 360px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+
+  .box-wrap {
+    margin: 0 auto;
+  }
+
+  .box {
+    margin: 0 20px;
+  }
 }
