@@ -11,6 +11,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+tbody {
+  display: table;
+  width: 100%;
+}
+
 body {
   line-height: 140%;
   font-family: "Open Sans", sans-serif;
@@ -204,7 +209,7 @@ header ul li a {
   margin: 64px 24px;
 }
 
-#target > img {
+.target-wrap > img {
   display: none;
 }
 
@@ -240,7 +245,7 @@ header ul li a {
 /* DATAS E HORARIOS */
 
 #schedule h1 {
-  line-height: 140%;
+  line-height: 140%;  
 }
 
 #schedule h3 {
@@ -377,7 +382,7 @@ header ul li a {
 
   #presentation {
     max-width: 800px;
-    margin: 36px auto;
+    margin: 72px auto;
   }
   .presentation-wrap {
     flex-direction: row;
@@ -404,10 +409,47 @@ header ul li a {
     margin: 0 auto;
     margin-bottom: 24px;
   }
+
+  /* PUBLICO ALVO */
+
+  #target {
+    max-width: 800px;
+    margin: 72px auto;
+  }
+
+  .credits {
+    max-width: 300px;
+  }
+
+  .target-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  .target-wrap > img {
+    display: flex;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  /* HORARIOS */
+
+  #schedule {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* REDES SOCIAIS */
+
+  #follow-us {
+    max-width: 360px;
+    margin: 72px auto;
+    margin-bottom: 120px;
+  }
+
 }
 
 @media screen and (min-width: 1440px) {
-
   .box-wrap {
     margin: 0 auto;
   }
@@ -423,4 +465,3 @@ header ul li a {
   border-bottom: 3px solid #333333 !important;
   transition: all 300ms ease-in;
 }
-
