@@ -287,17 +287,8 @@ header ul li a {
   letter-spacing: 0.05em;
 }
 
-#schedule > button {
-  display: flex;
-  color: #fff;
-  width: 100%;
-  justify-content: center;
-  padding: 12px 0;
-  background-color: #06729d;
-  letter-spacing: 0.05em;
-  line-height: 140%;
-  font-weight: 700;
-  margin: 36px 0;
+#second-day {
+  display: none;
 }
 
 /* FOLLOW US */
