@@ -277,11 +277,13 @@ header ul li a {
   padding: 16px 0;
   width: 100%;
   border-bottom: 3px solid transparent;
+  transition: all 300ms ease;
 }
 
 #schedule .schedule-btn button:active,
 #schedule .schedule-btn button:hover {
   border-bottom: 3px solid #333333;
+  transition: all 300ms ease;
 }
 
 #schedule table {
@@ -310,8 +312,9 @@ header ul li a {
   letter-spacing: 0.05em;
 }
 
+#first-day,
 #second-day {
-  display: none;
+  transition: all 300ms ease;
 }
 
 /* FOLLOW US */
@@ -413,3 +416,11 @@ header ul li a {
     margin: 0 20px;
   }
 }
+=======
+/* Conditional Styles */
+
+.active {
+  border-bottom: 3px solid #333333 !important;
+  transition: all 300ms ease-in;
+}
+
