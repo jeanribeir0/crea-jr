@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  Teste
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -111,108 +109,10 @@
       <hr class="line" />
       <h3>05 e 06 de Dezembro 2020</h3>
       <div class="schedule-btn">
-        <button class="active" id="day_one">Primeiro dia</button>
-        <button id="day_two">Segundo dia</button>
+        <button v-bind:class="{ 'active' : showDay == 'dayOne' }" id="day_one" v-on:click="setDay('dayOne')">Primeiro dia</button>
+        <button v-bind:class="{ 'active' : showDay == 'dayTwo' }" id="day_two" v-on:click="setDay('dayTwo')">Segundo dia</button>
       </div>
-      <table id="first-day">
-        <tr>
-          <th>Horário</th>
-          <th>Atividade</th>
-          <th>Palestrante</th>
-        </tr>
-        <tr>
-          <td>7:30 às 7:30</td>
-          <td>Credenciamento</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>7:30 às 8:00</td>
-          <td>Abertura</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>8:00 às 9:00</td>
-          <td>Meio ambiente</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>9:00 às 10:30</td>
-          <td>Logística</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>10:30 às 11:30</td>
-          <td>Industria 4.0</td>
-          <td>Helio Lemes</td>
-        </tr>
-        <tr>
-          <td>11:30 às 12:30</td>
-          <td>Apresentação de banner</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>12:30 às 14:00</td>
-          <td>PAUSA PARA ALMOÇO</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>14:00 às 15:00</td>
-          <td>Preenchimento de ART</td>
-          <td>Inspetoria CREA</td>
-        </tr>
-        <tr>
-          <td>15:00 às 16:00</td>
-          <td>Maquinas e mecanização agrícola</td>
-          <td>MINAS SUL</td>
-        </tr>
-        <tr>
-          <td>16:00 às 17:30</td>
-          <td>Apresentação de banner</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>17:30 às 18:30</td>
-          <td>Apresentação de banner</td>
-          <td>PSICOLOGO</td>
-        </tr>
-      </table>
-      <table id="second-day">
-        <tr>
-          <th>Horário</th>
-          <th>Atividade</th>
-          <th>Palestrante</th>
-        </tr>
-        <tr>
-          <td>10:00 às 11:00</td>
-          <td>Como transformar uma ideia em negocio</td>
-          <td>Sebrae</td>
-        </tr>
-        <tr>
-          <td>11:00 às 12:00</td>
-          <td>Palestra da Mutua</td>
-          <td>Mutua</td>
-        </tr>
-        <tr>
-          <td>12:00 às 13:00</td>
-          <td>PAUSA para almoço</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>13:00 às 15:00</td>
-          <td>Apresentação de artigos</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>15:00 às 16:00</td>
-          <td>Premiação dos Banners</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>16:00 às 16:30</td>
-          <td>Encerramento</td>
-          <td></td>
-        </tr>
-      </table>
+      <schedules v-bind:day="showDay" />
     </section>
     <section id="follow-us">
       <h1 class="after-title">Siga-nos</h1>
@@ -231,8 +131,85 @@
         <button>Enviar</button>
       </form>
     </div>
-  </main>
-  <script src="assets/js/script.js"></script>
+  </main> 
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('schedules', {
+      name: 'schedules',
+      props: ['day'],
+      data: () => ({
+          schedules: [
+            {
+              start: '7:30',
+              end: '8:00',
+              activity: 'Palestra',
+              speaker: 'Hélio',
+              day: 5    
+            },
+            {
+              start: '8:30',
+              end: '9:00',
+              activity: 'Palestra',
+              speaker: 'Fábio',
+              day: 5   
+            },
+            {
+              start: '8:30',
+              end: '9:00',
+              activity: 'Palestra',
+              speaker: 'Fábio',
+              day: 6   
+            },
+            {
+              start: '9:00',
+              end: '9:30',
+              activity: 'Palestra',
+              speaker: 'Erik',
+              day: 6   
+            }
+          ]
+      }),
+      computed: {
+        getSchedules() {
+          const checkDay = this.day == 'dayOne' ? 5 : 6;
+
+          const schedules = this.schedules.map(item => {
+            if(item.day == checkDay) {
+              return item
+            }
+          });
+
+          return schedules.filter(item => item != undefined);
+        }
+      },
+      template: `
+          <table>
+            <tr>
+                <th>Horário</th>
+                <th>Atividade</th>
+                <th>Palestrante</th>
+            </tr>
+            <tr v-for="data in getSchedules">
+                <td>{{ data.start }} às {{ data.end }}</td>
+                <td>{{ data.activity }}</td>
+                <td>{{ data.speaker }}</td>
+            </tr>
+          </table>
+      `
+    });
+
+    new Vue({
+        el: '#schedule',
+        data: {
+          showDay: 'dayOne'
+        },
+        methods: {
+          setDay(day) { 
+            this.showDay = day
+          }
+        },
+    })
+  </script>
 </body>
 
 </html>
