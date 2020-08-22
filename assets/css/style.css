@@ -28,23 +28,33 @@ ul {
 
 button {
   background-color: transparent;
+  cursor: pointer;
 }
 
 /* HEADER */
 
 header {
   background-image: url("../header-bg.svg");
-  background-position: top;
+  background-position: top right;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 85vh;
+  height: 80vh;
+  max-height: 600px;
   padding: 0 24px;
   margin-left: 20px;
+}
+
+#nav-web {
+  display: none;
 }
 
 header img {
   padding: 48px 0px 20px 0px;
   width: 80%;
+}
+
+#logo-black {
+  display: none;
 }
 
 header h2 {
@@ -86,7 +96,7 @@ header ul li a {
   padding: 12px 0;
   font-weight: 600;
   letter-spacing: 0.01em;
-
+  width: 100%;
   color: #ffffff;
 }
 
@@ -245,7 +255,7 @@ header ul li a {
 /* DATAS E HORARIOS */
 
 #schedule h1 {
-  line-height: 140%;  
+  line-height: 140%;
 }
 
 #schedule h3 {
@@ -377,17 +387,92 @@ header ul li a {
 
 /* MEDIAQUERIE */
 
+@media screen and (min-width: 576px) {
+  header {
+    background-size: contain;
+    max-height: 800px;
+  }
+
+  #logo-black {
+    display: flex;
+  }
+
+  #logo-white {
+    display: none;
+  }
+
+  #nav-mob ul li a {
+    color: #333333;
+  }
+
+  header h2 {
+    color: #333333;
+  }
+
+  header h2::after {
+    background-color: #333333;
+    margin-right: 90%;
+  }
+}
+
 @media screen and (min-width: 768px) {
+  /* HEADER */
+
+  header {
+    max-width: 1140px;
+    margin: 0 auto;
+    height: 90vh;
+  }
+
+  header > button {
+    display: none;
+  }
+
+  /* NAV MOB */
+  #nav-mob {
+    display: none;
+  }
+
+  /* NAV WEB */
+  #nav-web {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #nav-web img {
+    max-width: 320px;
+  }
+
+  #nav-web ul {
+    flex-direction: row;
+  }
+
+  #nav-web ul li {
+    padding: 0 16px;
+  }
+
+  #nav-web ul li a {
+    color: #333333;
+  }
+
+  #logo-black {
+    padding: 120px 0 0 0;
+  }
+
   /* APRESENTAÇÃO */
 
   #presentation {
     max-width: 800px;
     margin: 72px auto;
   }
+
   .presentation-wrap {
     flex-direction: row;
     align-items: center;
   }
+
   .presentation-wrap > img {
     display: flex;
   }
@@ -447,13 +532,21 @@ header ul li a {
     margin-bottom: 120px;
   }
 
+  .mail-fixed {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  #nav-web ul li a {
+    color: #fff;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .box-wrap {
     margin: 0 auto;
   }
-
   .box {
     margin: 0 20px;
   }
